@@ -1,0 +1,64 @@
+// Place all the styles related to the lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//
+// Group Lists
+//
+.list-spacing>li:first-child{
+	width:80px;
+}
+
+.list-spacing>li:last-child{
+	width: 80%;
+}
+
+.list-metadata{
+	color: #888;
+}
+
+.list-title a{
+	color: #222222;
+}
+
+.list-title a:hover{
+	text-decoration: underline;
+}
+
+.list-description{
+	display: inline-block;
+	font-size: 12px;
+	color: #6f6f6f;
+	margin-right:5px;
+}
+
+.list-creator{
+	margin-bottom: 0;
+}
+
+//
+// List Show
+//
+
+//
+// Header
+//
+.group-navigation{
+	color: #4c4c4c;
+	text-decoration: underline;
+}
+
+.list-date{
+	display: inline;
+	color: #aaa;
+	font-size: 12px;
+}
+
+.list-title{
+	display:inline;
+	margin-top: -.2rem;
+}
+
+.list-edit{
+	display:inline-block;
+}

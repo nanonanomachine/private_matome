@@ -1,0 +1,19 @@
+<li>
+	<div class ="row">
+		<div class="small-4 medium-4 large-4 columns">
+			<%= user_avatar_for user, 50 %>
+		</div>
+		<div class="small-8 medium-8 large-8 columns">
+			<h6 class="username"><%= user.email %></h6>
+			<% if can? :assign_member, group %>
+				<a><i class="fi-widget member-assign"  data-dropdown="manage-<%= user.id %>"></i></a>
+				<ul id="manage-<%= user.id %>" data-dropdown-content class="f-dropdown member-manage">
+					<li><%= link_to 'Assign Admin', group_assign_admin_path(group, user), method: :patch %></li>
+					<li><%= link_to 'Assign Moderator', group_assign_moderator_path(group, user), method: :patch %></li>
+					<li><%= link_to 'Assign Member', group_assign_member_path(group, user), method: :patch %></li>
+					<li><%= link_to 'Remove from this group', group_user_path(group, user), method: :delete, data: { confirm: 'Are you sure?'} %></li>
+				</ul>
+			<% end %>
+		</div>
+	</div>
+</li>

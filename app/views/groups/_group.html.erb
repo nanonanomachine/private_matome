@@ -1,0 +1,6 @@
+<li>
+	<%= group.id %> : <%= link_to group.name, group_path(group.id) %> : <%= group.description%>
+	<%= link_to 'Destroy item', group_path(group),
+				method: :delete,
+				data: { confirm: 'Are you sure?'} %>
+</li>

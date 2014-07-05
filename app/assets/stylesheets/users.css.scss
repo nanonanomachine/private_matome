@@ -1,0 +1,39 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//
+// Group Member page
+//
+.username{
+	word-break: break-word;
+}
+
+.list-spacing>li:first-child{
+	width:80px;
+}
+
+.list-spacing>li:last-child{
+	width: 80%;
+}
+
+.list-metadata{
+	color: #888;
+}
+
+.list-metadata>i{
+
+}
+
+.list-title a{
+	color: #222222;
+}
+
+.list-title a:hover{
+	text-decoration: underline;
+}
+
+.member-assign{
+	color: #888;
+}

@@ -1,0 +1,33 @@
+<div class="large-12 columns">
+	<div class="row">
+		<div class="large-8 columns">
+			<ul class="list-count-spacing large-block-grid-2">
+				<li>
+					<% if list.image? %>
+						<%= image_tag list.image.thumb.url %>
+					<% else %>
+						<img src="http://placehold.it/95x95&amp;text=list">
+					<% end %>
+				</li>
+				<li>
+					<h3 class="list-title">
+						<%= list.title %>
+					</h3>
+					<%= link_to edit_list_path(list), remote: true do %>
+						<i class="fi-pencil">Edit</i>
+					<% end %>
+					<div>
+						<p class="list-description"><%= list.description %></p>
+						<p class="list-date">Updated: <%= list.updated_at.to_formatted_s(:short)  %></p>
+					</div>
+					<ul class="inline-list list-creator">
+						<li><%= user_avatar_for list.user, 28 %></li>
+          				<li>
+          					<%= list.user.email %>
+          				</li>
+          			</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

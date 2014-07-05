@@ -1,0 +1,8 @@
+<div class="item-video"><%= item.url_html %></div>
+<h4 class="item-title video-title"><%= f.text_field :title, placeholder: "Add a title" %></h4>
+<div class="item-url">
+	<%= link_to item.url %>
+</div>
+<div class="item-description">
+	<%= f.text_area :description, placeholder: "Add comment about this video" %>
+</div>

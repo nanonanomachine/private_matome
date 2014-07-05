@@ -1,0 +1,23 @@
+<div class ="row">
+	<div class="form-item-image">
+		<div class="large-12 columns">
+			<ul class="form-item-image-spacing small-block-grid-2">
+				<li>
+					<img src="http://placehold.it/150x150&amp;text=image">
+				</li>
+				<li>
+					<%= f.label :image %>
+					<%= f.file_field :image %>
+			    	<%= f.label :remote_image_url, "or Image URL" %>
+			    	<%= f.text_field :remote_image_url, placeholder: "Image URL" %>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		<%= f.submit "Create", class:"button tiny"  %>
+		<a href="#" class="button tiny secondary" id="item-create-cancel">Cancel</a>
+	</div>
+</div>

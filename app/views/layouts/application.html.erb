@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+  <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+  <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+  <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+  <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+  <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
+
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "private_matome" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <!-- Header and Nav -->
+    <!-- <div class="row"> -->
+    <div class="contain-to-grid">
+     <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <!-- Title Area -->
+          <li class="name">
+            <h1><%= link_to 'private_matome', root_path %></h1>
+          </li>
+          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li class="has-form">
+              <div class="row collapse">
+                <div class="large-8 small-9 columns">
+                  <input type="text" placeholder="Find Stuff">
+                </div>
+                <div class="large-4 small-3 columns">
+                  <a href="#" class="button expand">Search</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <!-- User -->
+            <%if user_signed_in? %>
+              <li class="has-dropdown">
+                  <a href="#" data-dropdown="drop1">
+                    <img src="http://placehold.it/20x20&amp;text=[img]">
+                    <%= current_user.email %>
+                  </a>
+                  <ul id="drop1" data-dropdown-content class="f-dropdown">
+                    <li><%= link_to 'Edit profile', edit_user_path(id:current_user.id), :class => 'navbar-link' %> </li>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                  </ul>
+              </li>
+            <% else %>
+              <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
+    </div>
+    <!-- </div> -->
+    <!-- End Header and Nav -->
+    <div class="row main">
+      <!-- Nav Sidebar -->
+      <!-- This is source ordered to be pulled to the left on larger screens -->
+      <div class="small-2 large-2 columns ">
+        <section class="panel-header">Groups</section>
+        <div class="side-panel">
+          <ul class="side-nav">
+            <% if user_signed_in? %>
+              <% current_user.groups.each do |f| %>
+                <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
+              <% end %>
+              <li><a href="<%= url_for new_group_path =%>"><i class="fi-plus"></i>New group</a></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <section class="panel-header">Other groups</section>
+        <div class="side-panel">
+          <ul class="side-nav">
+            <% if user_signed_in? %>
+              <% (Group.find_not_secret - current_user.groups).each do |f| %>
+                <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="small-10  large-10 columns">
+        <div class="row">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+ <ul class="list-spacing small-block-grid-2 large-block-grid-2">
+	  <li>
+	  	<% if list.image? %>
+	  		<%= image_tag list.image.thumb.url %>
+		<% else %>
+	  		<img src="http://placehold.it/60x60&text=list">
+	  	<% end %>
+	  </li>
+	  <li>
+	    <h6 class="list-title"><%= link_to list.title, list_path(list.id) %></h6>
+	    <h6 class="subheader list-description"><%= list.description %></h6>
+	    <ul class="inline-list list-metadata">
+	        <li><i class="fi-book"><%= list.items.count %></i></li>
+	        <li><i class="fi-torsos"><%= list.items.select(:user_id).uniq.count %></i></li>
+	      </ul>
+	  </li>
+</ul>

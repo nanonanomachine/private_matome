@@ -1,0 +1,36 @@
+<%= render :layout => 'shared/group_layout', locals: {group: @group} do %>
+<div class="large-12 columns">
+	<div class="row">
+		<div class="large-12 columns">
+			<h3 class="member-title">Admins</h3>
+			<ul class="small-block-grid-3 medium-block-grid-4 large-block-grid-4">
+				<%= render partial: 'users/user', collection: @group.admins, as: :user, locals: { group: @group } %>
+			</ul>
+		</div>
+		<% if @group.moderators.any?  %>
+		<div class="large-12 columns">
+			<h3 class="member-title">Moderator</h3>
+			<ul class="small-block-grid-3 medium-block-grid-4 large-block-grid-4">
+				<%= render partial: 'users/user', collection: @group.moderators, as: :user, locals: { group: @group } %>
+			</ul>
+		</div>
+		<% end %>
+		<% if @group.members.any? %>
+		<div class="large-12 columns">
+			<h3 class="member-title">Member</h3>
+			<ul class="small-block-grid-3 medium-block-grid-4 large-block-grid-4">
+				<%= render partial: 'users/user', collection: @group.members, as: :user, locals: { group: @group } %>
+			</ul>
+		</div>
+		<% end %>
+		<% if can? :assign_member, @group %>
+		<div class="large-12 columns">
+			<h3 class="member-title">Add Users</h3>
+			<ul class="small-block-grid-3 medium-block-grid-4 large-block-grid-4">
+				<%= render partial: "users/new", locals: { users: User.all - @group.users, group: @group }  %>
+			</ul>
+		</div>
+		<% end %>
+	</div>
+</div>
+<% end %>

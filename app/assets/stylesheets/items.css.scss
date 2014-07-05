@@ -1,0 +1,143 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//
+// Item Lists
+//
+.item-spacing{
+	position: relative;
+
+	&:hover {
+		.item-content{
+			background-color: #f8f8f8;
+		}
+
+		.edit {
+			background-color: transparent;
+		}
+		
+		.sort-list{
+			// visibility: visible;
+			display: block;
+		}
+
+		.item-menu-list{
+			display: block;
+		}
+	 }
+}
+
+.item-content{
+	margin-bottom: 2rem;
+
+	div:not(:first-child){
+		margin-top: .5rem;
+	}
+}
+
+.item-title{
+	margin-top: 0;
+	text-decoration: underline;
+
+	a{
+		color: #222222;
+	}
+
+	&.video-title{
+		text-decoration: none;
+	}
+}
+
+.item-url{
+	font-size: 11px;
+}
+
+.item-snippet{
+	font-size: 12px;
+	color:#888;
+}
+
+.item-description{
+	color: #666;
+	border-left: 2px solid #d0d0d0;
+	padding-left: 6px;
+}
+
+.sort-list{
+	position: absolute;
+	display: none;
+	right:0;
+	margin-bottom: 0;
+	top: -22px;
+}
+
+.item-menu-list{
+	position: absolute;
+	display: none;
+	bottom: 24px - 22px; // TODO: Reduce magic number ... 24px=2rem, 22px=list height
+	right: 0;
+	margin-bottom: 0;
+}
+
+//
+// Text
+//
+.item-text{
+	color: #666;	
+}
+
+//
+// Header
+//
+.item-header{
+	border-bottom: 2px solid #eaecee;
+}
+
+.icon {
+	width:8px;
+	height: 16px;
+	fill: #008cba;
+}
+
+//
+// Create Item List
+//
+.create-item-spacing{
+	background-color: #F9F9F9;
+	overflow: hidden; // Avoid div height 0
+	padding: 15px 0 15px 5px;
+	margin-bottom: 2rem;
+	border-top: 3px solid #000;
+	border-bottom: 1px solid #cccccc;
+}
+
+.create-item-title{
+	font-weight: bold;
+	margin-bottom: 0;
+}
+.create-item-list{
+	margin-left: 0;
+	margin-bottom: 0;
+
+	li{
+		cursor: pointer;
+	}
+}
+
+//
+// Create Item form
+//
+.form-item-image{
+	overflow: hidden; // Avoid div height 0
+	margin: 0 0 1.14286rem 0;
+}
+
+.form-item-image-spacing>li:first-child{
+	width:150px;
+}
+
+
+.form-video{
+	margin-bottom: .5rem;
+}

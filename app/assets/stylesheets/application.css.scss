@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require foundation_and_overrides
+ */
+@import "foundation_and_overrides";
+@import "foundation/functions";
+@import "foundation/components/panels";
+@import "foundation-icons";
+
+//
+// HEADER
+//
+.right li{
+	width: 100%;
+}
+
+#drop1 li>a{
+	background-color: #fff;
+}
+
+//
+// MAIN
+//
+.main{
+	padding-top: rem-calc(20);
+}
+
+//
+// SIDE COMPONENT
+//
+.side-panel{
+	margin-bottom: rem-calc(20);
+}
+.side-panel li{
+	border: 1px solid #cbcbcb;
+	border-bottom-width: 0;
+	font-size: 1rem;
+}
+
+.side-panel li:last-child{
+	border-width: 1px;
+}
+
+.side-panel li:first-child{
+	border-top-width: 0;
+}
+
+.side-panel li>a{
+	padding: 0 10px;
+}
+
+.side-panel li:last-child,
+.side-panel li:last-child a{
+	border-bottom-left-radius: $global-radius;
+	border-bottom-right-radius: $global-radius;
+}
+
+.panel-header{
+	line-height: 1.6;
+	margin: 0;
+	background-color: #eaeaea;
+	width: 100%;
+	color: #555;
+	border: 1px solid #cbcbcb;
+	border-top-left-radius: $global-radius;
+	border-top-right-radius: $global-radius;
+	padding: 0 10px;
+}

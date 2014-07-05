@@ -1,0 +1,12 @@
+<h1>Group Index</h1>
+<% if can? :create, Group %>
+	<%= link_to 'Add a new group', new_group_path %>
+<% end %>
+<h2>My Groups</h2>
+<ul>
+	<%= render current_user.groups %>
+</ul>
+<h2>Other Groups</h2>
+<ul>
+	<%= render @group_withoutsecret %>
+</ul>

@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="large-12 columns">
+		<div class="item-content edit">
+			<%= form_for @item, remote: true do |f| %>
+				<%= render partial: "items/edit_#{@item_name}", locals: { f: f,  item: @item} %>
+				<div>
+					<%= f.submit "Update", class:"button tiny" %>
+					<%= link_to "Cancel", item_path(@item), method: :delete, class:"button tiny secondary", remote: true %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

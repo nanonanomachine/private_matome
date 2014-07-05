@@ -1,0 +1,15 @@
+<h4 class="item-title"><%= f.text_field :title %></h4>
+<div class="item-url">
+	<%= link_to item.url %>
+</div>
+<div class="item-snippet">
+	<%= f.text_area :snippet, placeholder: "Add link description" %>
+</div>
+<% if item.image? %>
+	<div>
+		<a href="<%= url_for item.image.url %>"><%= image_tag item.image.thumb.url %></a>
+	</div>
+<% end %>
+<div class="item-description">
+	<%= f.text_area :description, placeholder: "Add comment about this link" %>
+</div>

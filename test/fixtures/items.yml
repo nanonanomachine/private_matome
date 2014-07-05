@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  private_flag: false
+  prev_content_id: 1
+  type: 
+  title: MyString
+  description: MyString
+  search_keyword: MyString
+  service_type: MyString
+  source: MyString
+  thumbnail_url: MyString
+  url: MyString
+  list_id: 1
+  user_id: 1
+  group_id: 1
+  updated_time: 2013-09-13 01:36:02
+
+two:
+  private_flag: false
+  prev_content_id: 1
+  type: 
+  title: MyString
+  description: MyString
+  search_keyword: MyString
+  service_type: MyString
+  source: MyString
+  thumbnail_url: MyString
+  url: MyString
+  list_id: 1
+  user_id: 1
+  group_id: 1
+  updated_time: 2013-09-13 01:36:02

@@ -1,0 +1,88 @@
+// Place all the styles related to the Groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "foundation_and_overrides";
+
+//
+// Sub-Header
+//
+.group-header{
+	margin-bottom: 2rem !important;
+	border-bottom: 1px solid #f2f2f2;
+	overflow: hidden; // avoid div height 0
+}
+
+.list-count-spacing>li:first-child{
+	width: 100px;
+}
+
+.list-count-spacing>li:last-child{
+	width: 80%;
+}
+
+.list-count{
+	background-color: #e6e6e6;
+	text-align:center;
+
+	.list-count-container{
+		height: 40px;
+		background-color: #f2f2f2;
+		text-align: center;
+	}
+
+	.list-count-container>span{
+		position: relative;
+		top: 4px;
+		color: #666666;
+		font-family: "Proxima", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 1.75em;
+		font-weight: 700;
+	}
+
+	.total-list-count {
+		height: 30px;
+		font-family: "Proxima", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color: gray;
+		font-size: 0.6875em;
+		text-transform: uppercase;
+		padding: 8px 3px 3px 3px;
+		font-weight: 700;
+	}
+}
+
+.group-title{
+	margin-top: -.2rem;
+}
+
+.user-list{
+	margin-bottom: 0;
+}
+
+.subnav{
+	margin-bottom: 0;
+
+	li.current{
+		border-bottom: 2px solid black;
+	}
+	
+	li a{
+		padding: 4px 15px;
+		font-family: "Proxima", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-weight: 700;
+	}
+}
+
+@media #{$large-up} {
+	.subnav{
+		margin-top: 20px;
+	}
+}
+
+//
+// Edit page
+//
+.privacy-list{
+	margin-left: 0;
+	list-style-type: none;
+}

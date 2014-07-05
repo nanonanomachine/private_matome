@@ -1,0 +1,16 @@
+<ul class="inline-list">
+	<li>
+		<a href="<%= url_for item.image.url %>"><%= image_tag item.image.thumb.url %></a>
+		<% if item.url? %>
+			<div class="item-url">
+				<%= link_to item.url, item.url %>
+			</div>
+		<% end %>
+	</li>
+	<li>
+		<% if item.title? %>
+			<h5><%= item.title %></h5>
+		<% end %>
+		<%= simple_format(item.description) %>
+	</li>
+</ul>

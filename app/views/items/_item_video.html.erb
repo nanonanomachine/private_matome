@@ -1,0 +1,8 @@
+<div class="item-video"><%= item.url_html %></div>
+<h4 class="item-title video-title"><%= link_to  item.title, item.url %></h4>
+<div class="item-url">
+	<%= link_to item.url, item.url %>
+</div>
+<div class="item-description">
+	<%= simple_format(item.description) %>
+</div>

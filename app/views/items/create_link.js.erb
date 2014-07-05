@@ -1,0 +1,3 @@
+$('.item-form #link').attr('class','hide');
+$('.item-list').prepend('<div class="item-spacing" id="item-<%= @item.id %>"></div>')
+$('#item-<%= @item.id %>').html("<%= escape_javascript( render 'edit_after_create' ) %>");

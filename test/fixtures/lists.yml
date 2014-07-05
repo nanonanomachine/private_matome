@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  draft_flag: false
+  private_flag: false
+  title: MyString
+  description: MyString
+  thumbnail_url: MyString
+  user_id: 1
+  group_id: 1
+  updated_time: 2013-09-13 01:31:58
+
+two:
+  draft_flag: false
+  private_flag: false
+  title: MyString
+  description: MyString
+  thumbnail_url: MyString
+  user_id: 1
+  group_id: 1
+  updated_time: 2013-09-13 01:31:58

@@ -1,0 +1,6 @@
+<%= render :layout => 'shared/group_layout', locals: {group: @group} do %>
+	<div class="large-12 columns">
+		<h3>Edit Groups</h3>
+		<%= render partial: 'groups/form', locals: {group: @group} %>
+	</div>
+<% end %>
