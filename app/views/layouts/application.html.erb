@@ -53,7 +53,7 @@
             <%if user_signed_in? %>
               <li class="has-dropdown">
                   <a href="#" data-dropdown="drop1">
-                    <img src="http://placehold.it/20x20&amp;text=[img]">
+                    <%= user_avatar_for current_user, 20 %>
                     <%= current_user.email %>
                   </a>
                   <ul id="drop1" data-dropdown-content class="f-dropdown">
