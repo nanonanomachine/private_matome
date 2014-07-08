@@ -1,20 +1,16 @@
 <div class ="row">
 	<div class="form-item-image">
-		<div class="large-12 columns">
-			<ul class="form-item-image-spacing small-block-grid-2">
-				<li>
-				<a href="<%= url_for item.image.url %>"><%= image_tag item.image.thumb.url %></a>
-				<% if item.url? %>
-					<div class="item-url">
-						<%= link_to item.url %>
-					</div>
-				<% end %>
-				</li>
-				<li>
-				<%= f.text_field :title, placeholder: "Add a title" %>
-				<%= f.text_area :description, placeholder: "Add description" %>
-				</li>
-			</ul>
+		<div class="small-12 large-6 columns">
+			<a href="<%= url_for item.image.url %>"><%= image_tag item.image.thumb.url %></a>
+			<% if item.url? %>
+				<div class="item-url">
+					<%= link_to item.url %>
+				</div>
+			<% end %>
+		</div>
+		<div class="small-12 large-6 columns">
+			<%= f.text_field :title, placeholder: "Add a title" %>
+			<%= f.text_area :description, placeholder: "Add description" %>
 		</div>
 	</div>
 </div>
