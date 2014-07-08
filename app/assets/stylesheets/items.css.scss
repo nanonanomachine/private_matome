@@ -35,7 +35,7 @@
 .item-content{
 	margin-bottom: 2rem;
 
-	div:not(:first-child){
+	>div:not(:first-child){
 		margin-top: .5rem;
 	}
 }
