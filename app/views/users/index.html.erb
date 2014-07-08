@@ -17,7 +17,7 @@
 		<% end %>
 		<% if @group.members.any? %>
 		<div class="large-12 columns">
-			<h3 class="member-title">Member</h3>
+			<h3 class="member-title">Members</h3>
 			<ul class="small-block-grid-3 medium-block-grid-4 large-block-grid-4">
 				<%= render partial: 'users/user', collection: @group.members, as: :user, locals: { group: @group } %>
 			</ul>
