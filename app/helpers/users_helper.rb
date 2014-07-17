@@ -2,7 +2,7 @@ module UsersHelper
 	 # return user image
 	 def user_avatar_for(user, size)
 	 	if user.avatar?
-	 		image_tag(user.avatar.thumb.url)
+	 		image_tag(user.avatar.thumb.url, width: size, height: size)
 	 	else
 	 		gravatar_for(user,size)
 	 	end
