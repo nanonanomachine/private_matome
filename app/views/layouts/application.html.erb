@@ -20,56 +20,7 @@
   </head>
 
   <body>
-    <!-- Header and Nav -->
-    <!-- <div class="row"> -->
-    <div class="contain-to-grid">
-     <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-          <!-- Title Area -->
-          <li class="name">
-            <h1><%= link_to 'private_matome', root_path %></h1>
-          </li>
-          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-
-        <section class="top-bar-section">
-          <!-- Left Nav Section -->
-          <ul class="left">
-            <li class="has-form">
-              <div class="row collapse">
-                <div class="large-8 small-9 columns">
-                  <input type="text" placeholder="Find Stuff">
-                </div>
-                <div class="large-4 small-3 columns">
-                  <a href="#" class="button expand">Search</a>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <!-- Right Nav Section -->
-          <ul class="right">
-            <!-- User -->
-            <%if user_signed_in? %>
-              <li class="has-dropdown">
-                  <a href="#" data-dropdown="drop1">
-                    <%= user_avatar_for current_user, 20 %>
-                    <%= current_user.email %>
-                  </a>
-                  <ul id="drop1" data-dropdown-content class="f-dropdown">
-                    <li><%= link_to 'Edit profile', edit_user_path(id:current_user.id), :class => 'navbar-link' %> </li>
-                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-                  </ul>
-              </li>
-            <% else %>
-              <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-            <% end %>
-          </ul>
-        </section>
-      </nav>
-    </div>
-    <!-- </div> -->
-    <!-- End Header and Nav -->
+    <%= render "shared/header" %>
     <div class="row main">
       <!-- Nav Sidebar -->
       <!-- This is source ordered to be pulled to the left on larger screens -->
