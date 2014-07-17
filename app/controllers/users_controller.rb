@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	load_resource :group, :only => [:index]
 	before_filter :authenticate_user!
-
+	# layout "devise"
+	
 	def index
 	end
 
@@ -11,11 +12,8 @@ class UsersController < ApplicationController
 
 	def update_avatar
 		@user = current_user
-		if @user.update(user_params)
-			redirect_to root_path
-		else
-			render "edit"
-		end
+		@user.update(user_params)
+		redirect_to edit_user_registration_path(id:@user.id)
 	 end
 
 	def password
