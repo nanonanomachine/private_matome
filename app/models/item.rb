@@ -173,7 +173,6 @@ class Item < ActiveRecord::Base
 			last_id = self.list.items.where(prev_content_id: last_id).first.id
 		end
 
-		self.prev_content_id = last_prev_content_id
 		prev_item_id = self.prev_content_id
 		self.prev_content_id = last_id
 		self.save
