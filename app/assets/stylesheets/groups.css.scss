@@ -86,3 +86,37 @@
 	margin-left: 0;
 	list-style-type: none;
 }
+
+//
+// New page
+//
+.form-radio{
+	padding-left: 20px;
+
+	>div{
+		margin: 16px 0;
+	}
+
+	label{
+		font-size: 13px;
+		font-weight: bold;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	input{
+		float: left;
+		margin: 2px 0 0 -20px;
+	}
+
+	i{
+		float: left;
+		margin-right: 5px;
+		font-size: 24px;
+	}
+}
+
+.note{
+	display: block;
+	color: #666;
+}
