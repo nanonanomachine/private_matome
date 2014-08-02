@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 	load_and_authorize_resource
-	before_filter :authenticate_user!, except: :show
+	before_filter :authenticate_user!
 
 	def index
 		@group_withoutsecret = Group.without_secret

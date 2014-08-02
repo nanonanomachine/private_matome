@@ -11,9 +11,6 @@
 							<span>Lists</span>
 						</div>
 					</div>
-					<% if group.privacy == 'open' && %>
-						<%= link_to 'Join', group_user_path(group, current_user), method: :post, class: "button join" %>
-					<% end %>
 				</li>
 				<li>
 					<h3 class="group-title">
@@ -37,13 +34,7 @@
 				<li class="<%= 'current' if params[:controller] == 'groups' && params[:action] == 'show' %>"><%= link_to 'Lists', group_path(group) %></li>
 				<li class="<%= 'current' if params[:controller] == 'users' %>"><%= link_to 'Members', group_users_path(group) %></li>
 				<% if can? :manage, group %>
-					<li class="has-dropdown <%= 'current' if params[:controller] == 'groups' && params[:action] == 'edit' %>">
-						<a href="#" data-dropdown="group-drop"><i class="fi-widget"></i></a>
-						<ul id="group-drop" data-dropdown-content class="center f-dropdown">
-                			<li><%= link_to "Edit group", edit_group_path(group) %></li>
-                			<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-              			</ul>
-					</li>
+					<li class="<%= 'current' if params[:controller] == 'groups' && params[:action] == 'edit' %>"><%= link_to 'Edit', edit_group_path(group)%></li>
 				<% end %>
 			</ul>
 		</div>
