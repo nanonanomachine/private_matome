@@ -25,23 +25,27 @@
       <!-- Nav Sidebar -->
       <!-- This is source ordered to be pulled to the left on larger screens -->
       <div class="small-2 large-2 columns ">
-        <section class="panel-header">Groups</section>
-        <div class="side-panel">
-          <ul class="side-nav">
-            <% if user_signed_in? %>
-              <% current_user.groups.each do |f| %>
-                <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
-              <% end %>
-              <li><a href="<%= url_for new_group_path =%>"><i class="fi-plus"></i>New group</a></li>
-            <% end %>
-          </ul>
-        </div>
+        <% if user_signed_in? %>
+          <section class="panel-header">Groups</section>
+          <div class="side-panel">
+            <ul class="side-nav">
+                <% current_user.groups.each do |f| %>
+                  <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
+                <% end %>
+                <li><a href="<%= url_for new_group_path =%>"><i class="fi-plus"></i>New group</a></li>
+            </ul>
+          </div>
+        <% end %>
 
         <section class="panel-header">Other groups</section>
         <div class="side-panel">
           <ul class="side-nav">
             <% if user_signed_in? %>
               <% (Group.find_not_secret - current_user.groups).each do |f| %>
+                <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
+              <% end %>
+            <% else %>
+              <% Group.find_not_secret.each do |f| %>
                 <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
               <% end %>
             <% end %>
