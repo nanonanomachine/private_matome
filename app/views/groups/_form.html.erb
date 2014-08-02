@@ -16,21 +16,21 @@
   
   <div class="form-radio">
     <div>
-      <%= f.radio_button :privacy, 'Open' %>
+      <%= f.radio_button :privacy, 'open' %>
       <%= f.label :privacy_open, 'Open'%>
       <i class="fi-web"></i>
       <span class="note">Anyone can see the group, who's in it, and what members post.</span>
     </div>
 
     <div>
-      <%= f.radio_button :privacy, 'Close' %>
+      <%= f.radio_button :privacy, 'close' %>
       <%= f.label :privacy_close, 'Close'%>
       <i class="fi-lock"></i>
       <span class="note">Anyone can see the group and who's in it. Only members see posts.</span>
     </div>
 
      <div>
-      <%= f.radio_button :privacy, 'Secret' %>
+      <%= f.radio_button :privacy, 'secret' %>
       <%= f.label :privacy_secret, 'Secret'%>
       <i class="fi-shield"></i>
       <span class="note">Only members see the group, who's in it, and what members post.</span>

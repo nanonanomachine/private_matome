@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  before_save { |group| group.privacy = privacy.downcase }
   # Set many-to-many relation to user
   has_many :user_groups
   has_many :users, through: :user_groups
