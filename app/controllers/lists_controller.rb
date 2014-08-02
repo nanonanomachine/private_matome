@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 	load_resource :group,:only => [:new, :create]
 	load_and_authorize_resource :list, :through => :group, :shallow => true
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, except: :show
 	
 	def index
 	end
