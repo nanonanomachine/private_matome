@@ -33,10 +33,11 @@ GEM
     bcrypt-ruby (3.1.1)
     builder (3.1.4)
     cancan (1.6.10)
-    carrierwave (0.9.0)
+    carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+      mime-types (>= 1.16)
     chunky_png (1.2.8)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -149,7 +150,7 @@ PLATFORMS
 DEPENDENCIES
   auto_html
   cancan
-  carrierwave
+  carrierwave (~> 0.10.0)
   coffee-rails (~> 4.0.0)
   compass-rails
   devise

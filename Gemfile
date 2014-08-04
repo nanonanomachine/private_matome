@@ -60,8 +60,8 @@ gem 'devise'
 gem 'cancan'
 
 # Use CarrierWave
-gem 'carrierwave'
-gem 'rmagick'
+gem 'carrierwave', '~> 0.10.0'
+gem 'rmagick', :require => 'RMagick'
 
 # Use Nokogiri
 gem 'nokogiri'

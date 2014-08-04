@@ -57,10 +57,10 @@ class Item < ActiveRecord::Base
 
 	def relocate_first_item
 		first_item = self.class.where(prev_content_id: 0, list_id: self.list_id).first
-		self.save
+		self.save!
 		if first_item
 			first_item.prev_content_id = self.id
-			first_item.save
+			first_item.save!
 		end
 	end
 
