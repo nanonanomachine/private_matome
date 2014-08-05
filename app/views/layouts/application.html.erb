@@ -30,7 +30,7 @@
           <div class="side-panel">
             <ul class="side-nav">
                 <% current_user.groups.each do |f| %>
-                  <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
+                  <li><a href="<%= url_for group_path(f) =%>"><%= group_privacy_icon f.privacy %><%= f.name =%></a></li>
                 <% end %>
                 <li><a href="<%= url_for new_group_path =%>"><i class="fi-plus"></i>New group</a></li>
             </ul>
