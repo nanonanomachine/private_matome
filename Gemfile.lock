@@ -161,6 +161,7 @@ DEPENDENCIES
   nokogiri
   rails (= 4.0.0)
   remotipart
+  rinku
   rmagick
   sass-rails (~> 4.0.0)
   sdoc

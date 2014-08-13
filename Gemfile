@@ -71,3 +71,6 @@ gem 'auto_html'
 
 # Use remotipart for ajax image upload
 gem 'remotipart'
+
+# Use rinku for auto_link
+gem 'rinku'

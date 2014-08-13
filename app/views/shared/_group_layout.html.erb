@@ -18,7 +18,7 @@
 						<%= group_privacy_icon group.privacy %>
 					</h3>
 					<h6 class="subheader">
-						<%= group.description %>
+						<%= raw Rinku.auto_link(group.description) %>
 					</h6>
 					<ul class="user-list inline-list">
 						<% group.users.each do |f| %>

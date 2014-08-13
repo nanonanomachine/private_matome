@@ -11,6 +11,6 @@
 		<% if item.title? %>
 			<h5><%= item.title %></h5>
 		<% end %>
-		<%= simple_format(item.description) %>
+		<%= simple_format(Rinku.auto_link(item.description)) %>
 	</div>
 </div>
