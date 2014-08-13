@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
 
 	auto_html_for :url do
 	end
-
+	
 	def create_title
 		self.prev_content_id = 0
 		# Add itemtype, 1:title, 2:text, 3:link, 4:image, 5:video
@@ -89,11 +89,24 @@ class Item < ActiveRecord::Base
 			if images.present?
 				# Check the size with RMagick
 				images.each do |image|
-					url = URI.join(self.url, image.attributes["src"].value).to_s
-					rm_image = Magick::ImageList.new(url)
-					if rm_image.columns >= 100 && rm_image.rows >= 100
-						self.remote_image_url = url
-						break;
+					# Checks image src is an absolute url
+					uri = URI.parse(image.attributes["src"].value)
+					
+					url = if uri.absolute?
+						uri.to_s
+					else
+						URI.join(self.url, image.attributes["src"].value).to_s
+					end
+
+					begin
+						rm_image = Magick::ImageList.new(url)
+
+						if rm_image.columns >= 100 && rm_image.rows >= 100
+							self.remote_image_url = url
+							break
+						end
+					rescue Exception
+						logger.error Exception
 					end
 				end
 			end
