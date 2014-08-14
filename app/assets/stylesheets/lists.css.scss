@@ -62,3 +62,25 @@
 .list-edit{
 	display:inline-block;
 }
+
+//
+// Side panel
+//
+.item-user-list{
+	border: 5px solid #e2e5e8;
+	background-color: white;
+}
+
+.contributors{
+	>h6{
+		font-weight: bold;
+	}
+
+	>ul{
+		margin-bottom: 0;
+
+		>li{
+			cursor: default;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+<div class="panel item-user-list">
+	<div class="creator">
+		<ul class="inline-list">
+			<li><%= user_avatar_for list_user, 80 %></li>
+				<li>
+					<%= list_user.email %>
+				</li>
+		</ul>
+	</div>
+	<% if item_users %>
+		<hr>
+		<div class="contributors">
+			<h6>Contributors</h6>
+			<ul class="inline-list">
+				<% item_users.each do |u| %>
+					<li data-tooltip data-options="disable_for_touch:true" class="has-tip tip-top" title="<%= u.email %>"><%= user_avatar_for u, 55 %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+</div>

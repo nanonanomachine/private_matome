@@ -54,8 +54,11 @@
 </div>
 <div class="large-12 columns">
 	<div class="row">
-		<div class="large-9 columns item-list">
+		<div class="large-8 columns item-list">
 			<%= render @sort_items %>
+		</div>
+		<div class="large-4 columns">
+			<%= render partial: "lists/sidebar", locals: { list_user: @list.user, item_users: @item_users } %>
 		</div>
 	</div>
 </div>
