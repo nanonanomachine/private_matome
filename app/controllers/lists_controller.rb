@@ -13,6 +13,9 @@ class ListsController < ApplicationController
 	def show
 		# Order items
 		@sort_items = @list.sort_items
+		@item_users = @list.items.map{|x| x.user}.uniq
+		# Exclude list user
+		@item_users.delete(@list.user)
 	end
 
 	def create
