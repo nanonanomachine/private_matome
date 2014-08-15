@@ -73,43 +73,13 @@ class Item < ActiveRecord::Base
 		parsed_html = Nokogiri::HTML(html)
 
 		# Title
-		self.title = parsed_html.title
+		self.title = parse_html_title(parsed_html)
 
 		# Description and Image
 		# Link item only
 		if self.itemtype == 3
-			# snippet
-			meta_desc = parsed_html.css("meta[name='description']").first
-			self.snippet = meta_desc['content'] if meta_desc
-
-			# Images
-			# Exclude very small size images
-			images = parsed_html.css('img')
-
-			if images.present?
-				# Check the size with RMagick
-				images.each do |image|
-					# Checks image src is an absolute url
-					uri = URI.parse(image.attributes["src"].value)
-					
-					url = if uri.absolute?
-						uri.to_s
-					else
-						URI.join(self.url, image.attributes["src"].value).to_s
-					end
-
-					begin
-						rm_image = Magick::ImageList.new(url)
-
-						if rm_image.columns >= 100 && rm_image.rows >= 100
-							self.remote_image_url = url
-							break
-						end
-					rescue Exception
-						logger.error Exception
-					end
-				end
-			end
+			self.snippet = parse_html_description(parsed_html)
+			self.remote_image_url = parse_html_image(parsed_html)
 		end
 	end
 
@@ -193,6 +163,70 @@ class Item < ActiveRecord::Base
 		if next_item
 			next_item.prev_content_id = prev_item_id
 			next_item.save
+		end
+	end
+
+	private
+	def parse_html_title(parsed_html)
+		# Check open graph meta tag
+		og_title = parsed_html.css("meta[name='og:title']").first
+		
+		if og_title
+			og_title['content']
+		else
+			parsed_html.title
+		end
+	end
+
+	def parse_html_description(parsed_html)
+		# Check open graph meta tag
+		og_description = parsed_html.css("meta[name='og:description']").first
+		
+		if og_description
+			og_description['content']
+		else
+			# snippet
+			meta_desc = parsed_html.css("meta[name='description']").first
+			meta_desc['content'] if meta_desc
+		end
+	end
+
+	def parse_html_image(parsed_html)
+		# Check open graph meta tag
+		og_image = parsed_html.css("meta[name='og:image']").first
+		
+		if og_image
+			og_image['content']
+		else
+			# Read all img tags in html
+			# Exclude very small size images
+			images = parsed_html.css('img')
+
+			if images.present?
+				# Check the size with RMagick
+				images.each do |image|
+					# Checks image src is an absolute url
+					uri = URI.parse(image.attributes["src"].value)
+					
+					url = if uri.absolute?
+						uri.to_s
+					else
+						URI.join(self.url, image.attributes["src"].value).to_s
+					end
+
+					begin
+						rm_image = Magick::ImageList.new(url)
+
+						if rm_image.columns >= 100 && rm_image.rows >= 100
+							return url
+						end
+					rescue Exception
+						logger.error Exception
+					end
+				end
+			end
+			
+			return nil
 		end
 	end
 end
