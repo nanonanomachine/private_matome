@@ -1,6 +1,7 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "foundation_and_overrides";
 
 //
 // Item Lists
@@ -144,4 +145,15 @@
 
 .form-video{
 	margin-bottom: .5rem;
+}
+
+//
+// Edit Item form
+//
+#item-image-thumb{
+	max-width: 150px;
+}
+
+#item-image-num{
+	padding: $button-tny / 2;
 }

@@ -45,7 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Use Compass
-gem 'compass-rails'
+gem 'compass-rails', '~> 2.0.0'
 
 # Use Zurb-Foundation
 gem 'foundation-rails'

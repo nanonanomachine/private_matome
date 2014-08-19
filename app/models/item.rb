@@ -79,8 +79,53 @@ class Item < ActiveRecord::Base
 		# Link item only
 		if self.itemtype == 3
 			self.snippet = parse_html_description(parsed_html)
-			self.remote_image_url = parse_html_image(parsed_html)
 		end
+	end
+
+	def parse_html_image_urls
+		# Scarpe with Nokogiri
+		# Open URL
+		html = open(self.url).read
+
+		# Parse with Nokogiri
+		parsed_html = Nokogiri::HTML(html)
+
+		image_urls = Array.new
+		# Check open graph meta tag
+		og_image = parsed_html.css("meta[name='og:image']").first
+		
+		if og_image
+			image_urls << og_image['content']
+		else
+			# Read all img tags in html
+			# Exclude very small size images
+			images = parsed_html.css('img')
+
+			if images.present?
+				# Check the size with RMagick
+				images.each do |image|
+					# Checks image src is an absolute url
+					uri = URI.parse(image.attributes["src"].value)
+					
+					url = if uri.absolute?
+						uri.to_s
+					else
+						URI.join(self.url, image.attributes["src"].value).to_s
+					end
+
+					begin
+						rm_image = Magick::ImageList.new(url)
+
+						if rm_image.columns >= 100 && rm_image.rows >= 100
+							image_urls << url
+						end
+					rescue Exception
+						logger.error Exception
+					end
+				end
+			end
+		end
+		image_urls
 	end
 
 	def create_video_html
@@ -188,45 +233,6 @@ class Item < ActiveRecord::Base
 			# snippet
 			meta_desc = parsed_html.css("meta[name='description']").first
 			meta_desc['content'] if meta_desc
-		end
-	end
-
-	def parse_html_image(parsed_html)
-		# Check open graph meta tag
-		og_image = parsed_html.css("meta[name='og:image']").first
-		
-		if og_image
-			og_image['content']
-		else
-			# Read all img tags in html
-			# Exclude very small size images
-			images = parsed_html.css('img')
-
-			if images.present?
-				# Check the size with RMagick
-				images.each do |image|
-					# Checks image src is an absolute url
-					uri = URI.parse(image.attributes["src"].value)
-					
-					url = if uri.absolute?
-						uri.to_s
-					else
-						URI.join(self.url, image.attributes["src"].value).to_s
-					end
-
-					begin
-						rm_image = Magick::ImageList.new(url)
-
-						if rm_image.columns >= 100 && rm_image.rows >= 100
-							return url
-						end
-					rescue Exception
-						logger.error Exception
-					end
-				end
-			end
-			
-			return nil
 		end
 	end
 end

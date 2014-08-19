@@ -12,10 +12,20 @@
  *= require_tree .
  *= require foundation_and_overrides
  */
+@import "compass";
 @import "foundation_and_overrides";
 @import "foundation/functions";
 @import "foundation/components/panels";
 @import "foundation-icons";
+
+//
+// UTILITY
+//
+.u-icon-flip-horizontal{
+	&:before{
+		@include rotate(180deg);
+	}
+}
 
 //
 // HEADER

@@ -5,11 +5,27 @@
 <div class="item-snippet">
 	<%= f.text_area :snippet, placeholder: "Add link description" %>
 </div>
-<% if item.image? %>
-	<div>
-		<a href="<%= url_for item.image.url %>"><%= image_tag item.image.thumb.url %></a>
-	</div>
-<% end %>
+<div class="item-image">
+	<ul class="inline-list">
+		<li><img id="item-image-thumb" data-index="0" src=""></li>
+		<li>
+			<ul class="inline-list">
+				<li><a class="button tiny secondary" id="item-image-prev" href="#" data-no-turbolink><i class="fi-play u-icon-flip-horizontal"></i></a></li>
+				<li><a class="button tiny secondary" id="item-image-next" href="#" data-no-turbolink><i class="fi-play"></i></a></li>
+				<li><span id="item-image-num"></span></li>
+			</ul>
+		</li>
+	</ul>
+</div>
 <div class="item-description">
 	<%= f.text_area :description, placeholder: "Add comment about this link" %>
 </div>
+<%= f.hidden_field :remote_image_url, id: "image-remote-url" %>
+<%= javascript_tag do %>  
+  window.image_urls = <%= raw item.parse_html_image_urls %>;
+  if(window.image_urls){
+	  document.getElementById("item-image-thumb").setAttribute("src", window.image_urls[0]);
+	  document.getElementById("image-remote-url").value = window.image_urls[0];
+	  document.getElementById("item-image-num").innerHTML = "1" + "/" + window.image_urls.length;
+  }
+<% end %>  
