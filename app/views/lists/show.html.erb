@@ -22,40 +22,41 @@
 		</ul>
 	</div>
 </div>
-<div class="large-9 columns">
-	<div class="item-form">
-		<div class="hide" id="title">
-			<%= form_for shallow_args(@list, @list.items.build), remote: true do |f| %>
-				<p><%= render partial: "items/form_title", locals: { f: f } %></p>
-			<% end %>
-		</div>
-		<div class="hide" id="image">
-			<%= form_for shallow_args(@list, @list.items.build), :url => create_image_list_items_path(@list, @list.items.build), remote: true do |f| %>
-			<p><%= render partial: "items/form_image", locals: { f: f } %></p>
-			<%= token_tag %>
-		<% end %>
-		</div>
-		<div class="hide" id="link">
-			<%= form_for shallow_args(@list, @list.items.build), :url => create_link_list_items_path(@list, @list.items.build), remote: true do |f| %>
-		<p><%= render partial: "items/form_link", locals: { f: f } %></p>
-		<% end %>
-		</div>
-		<div class="hide" id="video">
-			<%= form_for shallow_args(@list, @list.items.build), :url => create_video_list_items_path(@list, @list.items.build), remote: true do |f| %>
-			<p><%= render partial: "items/form_video", locals: { f: f } %></p>
-			<% end %>
-		</div>
-		<div class="hide" id="text">
-			<%= form_for shallow_args(@list, @list.items.build), :url => create_text_list_items_path(@list, @list.items.build), remote: true do |f| %>
-			<p><%= render partial: "items/form_text", locals: { f: f } %></p>
-			<% end %>
-		</div>
-	</div>
-</div>
+
 <div class="large-12 columns">
 	<div class="row">
-		<div class="large-8 columns item-list">
-			<%= render @sort_items %>
+		<div class="large-8 columns">
+			<div class="item-form">
+				<div class="hide" id="title">
+					<%= form_for shallow_args(@list, @list.items.build), remote: true do |f| %>
+						<p><%= render partial: "items/form_title", locals: { f: f } %></p>
+					<% end %>
+				</div>
+				<div class="hide" id="image">
+					<%= form_for shallow_args(@list, @list.items.build), :url => create_image_list_items_path(@list, @list.items.build), remote: true do |f| %>
+					<p><%= render partial: "items/form_image", locals: { f: f } %></p>
+					<%= token_tag %>
+				<% end %>
+				</div>
+				<div class="hide" id="link">
+					<%= form_for shallow_args(@list, @list.items.build), :url => create_link_list_items_path(@list, @list.items.build), remote: true do |f| %>
+				<p><%= render partial: "items/form_link", locals: { f: f } %></p>
+				<% end %>
+				</div>
+				<div class="hide" id="video">
+					<%= form_for shallow_args(@list, @list.items.build), :url => create_video_list_items_path(@list, @list.items.build), remote: true do |f| %>
+					<p><%= render partial: "items/form_video", locals: { f: f } %></p>
+					<% end %>
+				</div>
+				<div class="hide" id="text">
+					<%= form_for shallow_args(@list, @list.items.build), :url => create_text_list_items_path(@list, @list.items.build), remote: true do |f| %>
+					<p><%= render partial: "items/form_text", locals: { f: f } %></p>
+					<% end %>
+				</div>
+			</div>
+			<div class="item-list">
+				<%= render @sort_items %>
+			</div>
 		</div>
 		<div class="large-4 columns">
 			<%= render partial: "lists/sidebar", locals: { list_user: @list.user, item_users: @item_users } %>
