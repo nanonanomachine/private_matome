@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
 	belongs_to :group
 	belongs_to :list
 	mount_uploader :image, ImageUploader
+	after_initialize :set_default_value
 
 	auto_html_for :url do
 	end
@@ -213,6 +214,11 @@ class Item < ActiveRecord::Base
 	end
 
 	private
+	def set_default_value
+		# Set empty string to execute Rinku.auto_link
+    	self.description  ||= ""
+	end
+
 	def parse_html_title(parsed_html)
 		# Check open graph meta tag
 		og_title = parsed_html.css("meta[property='og:title']").first
