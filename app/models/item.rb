@@ -92,10 +92,11 @@ class Item < ActiveRecord::Base
 
 		image_urls = Array.new
 		# Check open graph meta tag
-		og_image = parsed_html.css("meta[name='og:image']").first
+		og_image = parsed_html.css("meta[property='og:image']").first
 		
 		if og_image
 			image_urls << og_image['content']
+			puts(og_image['content'])
 		else
 			# Read all img tags in html
 			# Exclude very small size images
@@ -214,7 +215,7 @@ class Item < ActiveRecord::Base
 	private
 	def parse_html_title(parsed_html)
 		# Check open graph meta tag
-		og_title = parsed_html.css("meta[name='og:title']").first
+		og_title = parsed_html.css("meta[property='og:title']").first
 		
 		if og_title
 			og_title['content']
@@ -225,7 +226,7 @@ class Item < ActiveRecord::Base
 
 	def parse_html_description(parsed_html)
 		# Check open graph meta tag
-		og_description = parsed_html.css("meta[name='og:description']").first
+		og_description = parsed_html.css("meta[property='og:description']").first
 		
 		if og_description
 			og_description['content']
