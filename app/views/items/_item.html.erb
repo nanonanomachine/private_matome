@@ -1,30 +1,32 @@
 <div class="item-spacing" id="item-<%= item.id %>">
-	<ul class="inline-list sort-list">
-		<li>
-			<%= link_to up_item_path(item), method: :patch do %>
-				<i class="fi-arrow-up"></i>
-			<% end %>
-		</li>
-		<li>
-			<%= link_to down_item_path(item), method: :patch do %>
-				<i class="fi-arrow-down"></i>
-			<% end %>
-		</li>
-		<li>
-			<%= link_to ahead_item_path(item), method: :patch do %>
-				<svg class="icon shape-angle-double-up" viewbox="0 0 1152 576">
-					<use xlink:href="#shape-angle-double-up" />
-				</svg>
-			<% end %>
-		</li>
-		<li>
-			<%= link_to backward_item_path(item), method: :patch do %>
-				<svg class="icon shape-angle-double-down" viewbox="0 0 1152 576">
-					<use xlink:href="#shape-angle-double-down" />
-				</svg>
-			<% end %>
-		</li>
-	</ul>
+	<% if can? :manage, item %>
+		<ul class="inline-list sort-list">
+			<li>
+				<%= link_to up_item_path(item), method: :patch do %>
+					<i class="fi-arrow-up"></i>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to down_item_path(item), method: :patch do %>
+					<i class="fi-arrow-down"></i>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to ahead_item_path(item), method: :patch do %>
+					<svg class="icon shape-angle-double-up" viewbox="0 0 1152 576">
+						<use xlink:href="#shape-angle-double-up" />
+					</svg>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to backward_item_path(item), method: :patch do %>
+					<svg class="icon shape-angle-double-down" viewbox="0 0 1152 576">
+						<use xlink:href="#shape-angle-double-down" />
+					</svg>
+				<% end %>
+			</li>
+		</ul>
+	<% end %>
 	<div class="row">
 		<div class="large-12 columns">
 			<div class="item-content item">
@@ -32,16 +34,18 @@
 			</div>
 		</div>
 	</div>
-	<ul class="inline-list item-menu-list">
-		<li>
-			<%= link_to edit_item_path(item), remote: true do %>
-				<i class="fi-pencil">Edit</i>
-			<% end %>
-		</li>
-		<li>
-			<%= link_to item_path(item), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
-				<i class="fi-trash">Destroy</i>
-			<% end %>
-		</li>
-	</ul>
+	<% if can? :manage, item %>
+		<ul class="inline-list item-menu-list">
+			<li>
+				<%= link_to edit_item_path(item), remote: true do %>
+					<i class="fi-pencil">Edit</i>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to item_path(item), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
+					<i class="fi-trash">Destroy</i>
+				<% end %>
+			</li>
+		</ul>
+	<% end %>
 </div>

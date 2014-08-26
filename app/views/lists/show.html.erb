@@ -12,6 +12,7 @@
 </div>
 <div class="large-12 columns">
 	<div class="create-item-spacing">
+	<% if can? :create, @list => Item %>
 		<p class="left create-item-title">Add Item</p>
 		<ul class="inline-list left create-item-list">
 			<li id="title">Title</li>
@@ -20,12 +21,14 @@
 			<li id="video">Video</li>
 			<li id="text">Text</li>
 		</ul>
+	<% end %>
 	</div>
 </div>
 
 <div class="large-12 columns">
 	<div class="row">
 		<div class="large-8 columns">
+			<% if can? :create, @list => Item %>
 			<div class="item-form">
 				<div class="hide" id="title">
 					<%= form_for shallow_args(@list, @list.items.build), remote: true do |f| %>
@@ -54,6 +57,7 @@
 					<% end %>
 				</div>
 			</div>
+			<% end %>
 			<div class="item-list">
 				<%= render @sort_items %>
 			</div>

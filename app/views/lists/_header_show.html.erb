@@ -13,8 +13,10 @@
 					<h3 class="list-title">
 						<%= list.title %>
 					</h3>
-					<%= link_to edit_list_path(list), remote: true do %>
-						<i class="fi-pencil">Edit</i>
+					<% if can? :manage, list %> 
+						<%= link_to edit_list_path(list), remote: true do %>
+							<i class="fi-pencil">Edit</i>
+						<% end %>
 					<% end %>
 					<div>
 						<p class="list-description"><%= list.description %></p>
