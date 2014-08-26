@@ -1,7 +1,11 @@
 <%= render :layout => 'shared/group_layout', locals: {group: @group} do %>
 	<div class="large-12 columns">
 		<div class="small-12 columns">
-        	<h3 class="title">Lists<a href="<%= url_for new_group_list_path(@group) %>" class="tiny button radius right"><i class="fi-plus">New List</i></a></h3>
+        	<h3 class="title">Lists
+        	<% if can? :create, @group => List %>
+        		<a href="<%= url_for new_group_list_path(@group) %>" class="tiny button radius right"><i class="fi-plus">New List</i></a>
+        	<% end %>
+        	</h3>
         </div>
 		<div class="samll-12 columns">
 			<%= render partial: 'lists/list', collection: @group.lists, as: :list %>
