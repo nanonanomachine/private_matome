@@ -4,7 +4,7 @@
 			<%= user_avatar_for user, 50 %>
 		</div>
 		<div class="small-8 medium-8 large-8 columns">
-			<h6 class="username"><%= user.email %></h6>
+			<h6 class="username"><%= user.name %></h6>
 			<% if can? :assign_member, group %>
 				<a><i class="fi-widget member-assign"  data-dropdown="manage-<%= user.id %>"></i></a>
 				<ul id="manage-<%= user.id %>" data-dropdown-content class="f-dropdown member-manage">

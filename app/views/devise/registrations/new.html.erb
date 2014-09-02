@@ -3,14 +3,17 @@
 	  <%= devise_error_messages! %>
 		<fieldset>
 			<legend>Sign up</legend>
-			<div><%= f.label :email %><br />
-			<%= f.email_field :email, :autofocus => true %></div>
+			<div><%= f.label :name %><br />
+			<%= f.text_field :name, :autofocus => true, placeholder: "Pick a username"%></div>
+ 
+			<div><%= f.label :email, "Email (optional)" %><br />
+			<%= f.email_field :email, placeholder: "Your email" %></div>
 
 			<div><%= f.label :password %><br />
-			<%= f.password_field :password %></div>
+			<%= f.password_field :password, placeholder: "Create a password" %></div>
 
 			<div><%= f.label :password_confirmation %><br />
-			<%= f.password_field :password_confirmation %></div>
+			<%= f.password_field :password_confirmation, placeholder: "Confirm password" %></div>
 
 				<div><%= f.submit "Sign up", class:"button tiny submit devise-button" %></div>
 		</fieldset>

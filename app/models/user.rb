@@ -9,10 +9,16 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, uniqueness: true, if: -> { self.name.present? }
   # Mount uploader for CarrierWave
   mount_uploader :avatar, AvatarUploader
 
   def is_admin?
     self.role == "admin"
+  end
+
+   def email_required?
+    false
   end
 end

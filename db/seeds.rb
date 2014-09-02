@@ -5,13 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create(:email => 'test@test.com', :password => '123456789a', :password_confirmation => '123456789a', :role => 'admin')
+user = User.create(:name => "user_first", :email => 'test@test.com', :password => '123456789a', :password_confirmation => '123456789a', :role => 'admin')
 user.save!
 
-user_second = User.create(:email => 'test_second@test.com', :password => '123456789a', :password_confirmation => '123456789a')
+user_second = User.create(:name => "user_second", :email => 'test_second@test.com', :password => '123456789a', :password_confirmation => '123456789a')
 user_second.save!
 
-user_third = User.create(:email => 'test_third@test.com', :password => '123456789a', :password_confirmation => '123456789a')
+user_third = User.create(:name => "user_thrid", :email => 'test_third@test.com', :password => '123456789a', :password_confirmation => '123456789a')
 user_third.save!
 
 group = Group.create(:name => 'test group', :description => 'test description', :link => 'http://www.google.com', :privacy => 'open')
