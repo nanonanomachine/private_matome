@@ -74,3 +74,7 @@ gem 'remotipart'
 
 # Use rinku for auto_link
 gem 'rinku'
+
+# Use public_activity
+gem 'public_activity'
+gem 'public_activity'
