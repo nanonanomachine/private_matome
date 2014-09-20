@@ -1,7 +1,25 @@
 <!-- Main Feed -->
 <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
-<div class="large-10 columns">
-	<h1>Welcome#index</h1>
-	<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="large-12 columns">
+	<h3>Acitivity</h3>
+  <hr>
+	<% @activities.each do |activity| %>
+  		<div class="activity">
+  			<ul class="list-spacing small-bock-grid-2 large-block-grid-2">
+  			<li>
+  				<%= user_avatar_for activity.owner, 50 %>
+  			</li>
+  			<li>
+  				<h6>
+		  			<%= activity.owner.name if activity.owner %>
+		    		<%= render_activity activity %>
+		    	</h6>
+		    	<div class="list-metadata">
+		    		<%= distance_of_time_in_words(Time.now, activity.created_at) %> ago
+		    	</div>
+    		</li>
+    		<hr>
+  		</div>
+	<% end %>
 </div>
 <!-- End Feed Entry -->

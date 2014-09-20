@@ -1,0 +1,6 @@
+added a list  
+<% if activity.trackable %>
+	<%= link_to activity.trackable.title, activity.trackable %>
+<% else %>
+	which does not exist anymore
+<% end %>

@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked except: [:update, :destroy], owner: Proc.new{ |controller, model| controller.current_user }
   before_save { |group| group.privacy = privacy.downcase }
   # Set many-to-many relation to user
   has_many :user_groups

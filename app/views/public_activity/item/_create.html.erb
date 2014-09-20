@@ -1,0 +1,7 @@
+added an item 
+<% if  activity.trackable %>
+<!-- TODO style fix -->
+	<%=link_to activity.trackable.list.title, activity.trackable.list %> <%= link_to activity.trackable.title, activity.trackable %>
+<% else %>
+	which does not exist anymore
+<% end %>

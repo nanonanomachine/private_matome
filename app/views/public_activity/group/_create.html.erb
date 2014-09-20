@@ -1,0 +1,6 @@
+added a group 
+<% if activity.trackable %>
+	<%= link_to activity.trackable.name, activity.trackable %>
+<% else %>
+	which does not exist anymore
+<% end %>
