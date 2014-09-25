@@ -1,7 +1,17 @@
 added an item 
 <% if  activity.trackable %>
 <!-- TODO style fix -->
-	<%=link_to activity.trackable.list.title, activity.trackable.list %> <%= link_to activity.trackable.title, activity.trackable %>
+	to <%=link_to activity.trackable.list.title, activity.trackable.list %>
+	<div class="panel item-excerpt">
+		<% if activity.trackable.title %>
+			<div class="item-excerpt-title">
+				<%= activity.trackable.title %>
+			</div>
+		<% end %>
+		<div class="item-excerpt-description">
+			<%= activity.trackable.description %>
+		</div>
+	</div>
 <% else %>
 	which does not exist anymore
 <% end %>
