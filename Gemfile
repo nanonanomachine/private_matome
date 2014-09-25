@@ -77,4 +77,3 @@ gem 'rinku'
 
 # Use public_activity
 gem 'public_activity'
-gem 'public_activity'
