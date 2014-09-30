@@ -38,21 +38,17 @@
             </ul>
           </div>
         <% end %>
-
-        <section class="panel-header">Other groups</section>
-        <div class="side-panel">
-          <ul class="side-nav">
-            <% if user_signed_in? %>
-              <% (Group.find_not_secret - current_user.groups).each do |f| %>
-                <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
-              <% end %>
-            <% else %>
-              <% Group.find_not_secret.each do |f| %>
-                <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
+        
+        <% if @other_groups.length > 0 %>
+          <section class="panel-header">Other groups</section>
+          <div class="side-panel">
+            <ul class="side-nav">
+                <% @other_groups.each do |f| %>
+                  <li><a href="<%= url_for group_path(f) =%>"><i class="fi-torsos"></i><%= f.name =%></a></li>
+                <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
       <div class="small-10  large-10 columns">
         <div class="row">

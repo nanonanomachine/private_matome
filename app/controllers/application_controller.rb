@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
+  before_filter :other_groups
 
   def require_admin
   	if current_user.is_admin?
@@ -17,6 +18,14 @@ class ApplicationController < ActionController::Base
   		render_500("Not Authorized Admin")
   		return false
   	end
+  end
+
+  def other_groups
+    @other_groups = if user_signed_in?
+      Group.find_not_secret - current_user.groups
+    else
+      Group.find_not_secret.each
+    end
   end
 
   # Exception Handling
