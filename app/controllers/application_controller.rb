@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     @other_groups = if user_signed_in?
       Group.find_not_secret - current_user.groups
     else
-      Group.find_not_secret.each
+      Group.find_not_secret
     end
   end
 
