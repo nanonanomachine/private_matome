@@ -3,8 +3,6 @@ class GroupsController < ApplicationController
 	before_filter :authenticate_user!, except: [:show, :index]
 
 	def index
-		@group_withoutsecret = Group.without_secret
-		@group_withoutsecret = @group_withoutsecret - current_user.groups
 	end
 
 	def new
