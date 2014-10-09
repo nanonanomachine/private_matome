@@ -1,12 +1,15 @@
-<h1>Group Index</h1>
-<% if can? :create, Group %>
-	<%= link_to 'Add a new group', new_group_path %>
-<% end %>
-<h2>My Groups</h2>
-<ul>
-	<%= render current_user.groups %>
-</ul>
-<h2>Other Groups</h2>
-<ul>
-	<%= render @group_withoutsecret %>
-</ul>
+<div class="large-12 columns">
+	<h3>Groups
+	<% if can? :create, Group %>
+		<a href="<%= url_for new_group_path(@group) %>" class="tiny button radius right"><i class="fi-plus">New Group</i></a>
+	<% end %>
+	<hr>
+	</h3>
+	<% if user_signed_in? %>
+			<%= render current_user.groups %>
+	<% end %>
+	<% if @other_groups.present? %>
+		<h3>Other Groups<hr></h3>
+		 	<%= render @other_groups %>
+	<% end %>
+</div>

@@ -1,6 +1,15 @@
-<li>
-	<%= group.id %> : <%= link_to group.name, group_path(group.id) %> : <%= group.description%>
-	<%= link_to 'Destroy item', group_path(group),
-				method: :delete,
-				data: { confirm: 'Are you sure?'} %>
-</li>
+<ul class="group-spacing small-block-grid-1 large-block-grid-1">
+	<li>
+		<h3 class="group-title">
+			<a href="<%= url_for group_path(group) =%>"><%= group_privacy_icon group.privacy %><%= group.name %></a>
+		</h3>
+		<h6 class="subheader group-description">
+			<%= raw Rinku.auto_link(group.description) %>
+		</h6>
+	    <ul class="inline-list group-metadata">
+	        <li><i class="fi-list"><%= group.lists.count %></i></li>
+	        <li><i class="fi-torsos"><%= group.users.count %></i></li>
+	    </ul>
+	</li>
+</ul>
+
