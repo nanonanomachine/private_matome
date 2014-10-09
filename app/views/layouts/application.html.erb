@@ -26,7 +26,7 @@
     <div class="row main">
       <!-- Nav Sidebar -->
       <!-- This is source ordered to be pulled to the left on larger screens -->
-      <div class="small-2 large-2 columns ">
+      <div class="medium-3 large-2 columns show-for-medium-up">
         <% if user_signed_in? %>
           <section class="panel-header">Groups</section>
           <div class="side-panel">
@@ -50,7 +50,7 @@
           </div>
         <% end %>
       </div>
-      <div class="small-10  large-10 columns">
+      <div class="small-12 medium-9 large-10 columns">
         <div class="row">
           <%= yield %>
         </div>
