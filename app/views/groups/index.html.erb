@@ -1,13 +1,14 @@
 <div class="large-12 columns">
-	<h3>Groups
-	<% if can? :create, Group %>
-		<a href="<%= url_for new_group_path(@group) %>" class="tiny button radius right"><i class="fi-plus">New Group</i></a>
-	<% end %>
-	<hr>
-	</h3>
 	<% if user_signed_in? %>
-			<%= render current_user.groups %>
+		<h3>Groups
+		<% if can? :create, Group %>
+			<a href="<%= url_for new_group_path(@group) %>" class="tiny button radius right"><i class="fi-plus">New Group</i></a>
+		<% end %>
+		<hr>
+		</h3>
+		<%= render current_user.groups %>
 	<% end %>
+	
 	<% if @other_groups.present? %>
 		<h3>Other Groups<hr></h3>
 		 	<%= render @other_groups %>
