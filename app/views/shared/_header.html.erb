@@ -14,7 +14,7 @@
     <section class="top-bar-section">
       <!-- Left Nav Section -->
       <ul class="left">
-        <li class="has-form">
+        <li class="has-form hide-for-small-only">
           <div class="row collapse">
             <div class="large-8 small-9 columns">
               <input type="text" placeholder="Find Stuff">
@@ -24,9 +24,14 @@
             </div>
           </div>
         </li>
+        <li class="show-for-small-only"><%= link_to 'Groups', groups_path, :class => 'navbar-link' %></li>
+        <% if user_signed_in? %>
+          <li class="show-for-small-only"><%= link_to 'Account settings', edit_user_registration_path(id:current_user.id), :class => 'navbar-link' %></li>
+          <li class="show-for-small-only"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+        <% end %>
       </ul>
       <!-- Right Nav Section -->
-      <ul class="right">
+      <ul class="right hide-for-small-only">
         <!-- User -->
         <%if user_signed_in? %>
           <li class="has-dropdown">
