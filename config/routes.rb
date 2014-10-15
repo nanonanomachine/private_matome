@@ -1,4 +1,4 @@
-Naverclone::Application.routes.draw do
+PrivateMatome::Application.routes.draw do
   # devise_for :users
   # Use custom controller for devise
   devise_for :users, :controllers => {

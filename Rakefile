@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Naverclone::Application.load_tasks
+PrivateMatome::Application.load_tasks
