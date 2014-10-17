@@ -35,7 +35,7 @@ class Ability
     can :manage, Group, id: user.user_groups.where(role: 'admin').collect(&:group_id)
     can :read, List, group: { id: Group.where(privacy: 'open').collect(&:id) }
     can :manage, List, group: { id: user.user_groups.where(role: ['admin', 'moderator', 'member']).collect(&:group_id) }
-    can :read, Item, group: { id: Group.where(privacy: 'open').collect(&:id) }
+    can :read, Item, list: { group: { id: Group.where(privacy: 'open').collect(&:id) } }
     can :manage, Item, list: { group: { id: user.user_groups.where(role: ['admin', 'moderator', 'member']).collect(&:group_id) } }
 
     # Actions in Non Restful Controller
