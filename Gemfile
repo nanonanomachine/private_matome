@@ -77,3 +77,14 @@ gem 'rinku'
 
 # Use public_activity
 gem 'public_activity'
+
+# Use thiin instead of WEBrick
+gem 'thin'
+
+group :development do
+	gem 'pry-rails'
+	gem 'quiet_assets'
+	gem 'tapp'
+	gem 'better_errors'
+	gem 'spring'
+end
